@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+#elementToMove {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Permite mover el elemento por todo el body */
+}
+
+#joystick {
+    width: 100px;
+    height: 100px;
+    background-color: #2ecc71;
+    border-radius: 100%;
+    position: absolute; 
+    /* position: fixed; */
+    bottom: 50px; /* Ejemplo de posición fija */
+    left: 50px;   /* Ejemplo de posición fija */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 136, 204, 0.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) inset, 0 1px 1px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s;
+    touch-action: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    &:hover {
+        #joystick-inner {
+            background: rgba(0, 136, 204, 0.35);
+        }
+    }
+}
+
+
+#joystick-inner {
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    height: 64px;
+    width: 64px;
+    border-radius: 100%;
+    background: rgba(0, 136, 204, 0.25);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7) inset;
+    position: absolute;
+    transition: background 0.3s;
+}

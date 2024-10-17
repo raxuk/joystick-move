@@ -1,11 +1,11 @@
 const joystick = document.getElementById('joystick');
 const joystickInner = document.getElementById('joystick-inner');
-const elemento = document.getElementById('esteelemento');
+const elemento = document.getElementById('elementToMove');
 
 let isMoving = false;
 let joystickCenterX, joystickCenterY;
-const speed = 3; // Velocidad constante
-const maxMovement = 50; // Rango máximo de movimiento del joystick
+const speed = 4; // Velocidad constante
+const maxRadius = 50; // Radio máximo de movimiento del joystick
 
 // Variables para el movimiento acumulativo
 let movementX = 0;
@@ -34,8 +34,8 @@ function updateMovement() {
     }
 
     // Actualizar la posición del elemento
-    const bodyWidth = document.body.clientWidth;
-    const bodyHeight = document.body.clientHeight;
+    const bodyWidth = elemento.parentElement.clientWidth;
+    const bodyHeight = elemento.parentElement.clientHeight;
 
     elemento.style.left = Math.min(Math.max(elemento.offsetLeft + movementX, 0), bodyWidth - elemento.clientWidth) + 'px';
     elemento.style.top = Math.min(Math.max(elemento.offsetTop + movementY, 0), bodyHeight - elemento.clientHeight) + 'px';
@@ -49,9 +49,12 @@ document.addEventListener('mousemove', (event) => {
     const deltaX = event.clientX - joystickCenterX;
     const deltaY = event.clientY - joystickCenterY;
 
-    // Limitar el movimiento del joystick interno
-    const moveX = Math.min(Math.max(deltaX, -maxMovement), maxMovement);
-    const moveY = Math.min(Math.max(deltaY, -maxMovement), maxMovement);
+    // Calcular la distancia desde el centro del joystick
+    const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+
+    // Limitar el movimiento del joystick interno a un radio circular
+    const moveX = distance > maxRadius ? (deltaX / distance) * maxRadius : deltaX;
+    const moveY = distance > maxRadius ? (deltaY / distance) * maxRadius : deltaY;
 
     // Mover el círculo interno del joystick
     joystickInner.style.transform = `translate(${moveX}px, ${moveY}px)`;

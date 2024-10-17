@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joystick Control</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Joystick Example</title>
 </head>
 <body>
-
-<div id="esteelemento">COSAS</div>
-<div id="joystick">
-    <div id="joystick-inner"></div> <!-- Círculo interno del joystick -->
+    <div style="height: 100vh;width: 100vw;">
+    <div id="elementToMove">MOVE-ME</div>
 </div>
-
-<script src="script.js"></script>
+    <script type="module">
+        import Joystick from './src/joystick.js';
+        new Joystick('elementToMove', (position) => {
+        console.log('Posición actual:', position);
+    });    </script>
 </body>
 </html>
