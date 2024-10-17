@@ -1,5 +1,5 @@
 class Joystick {
-    constructor(elementToMoveId, onMoveCallback) {
+    constructor(elementToMoveId, onMoveCallback, speed = 4) {
       this.joystick = document.createElement('div');
       this.joystickInner = document.createElement('div');
       this.elemento = document.getElementById(elementToMoveId);
@@ -11,11 +11,10 @@ class Joystick {
       this.joystickInner.id = 'joystick-inner';
   
       this.joystick.appendChild(this.joystickInner);
-      document.body.appendChild(this.joystick);
   
       this.isMoving = false;
       this.speed = 4;
-      this.maxRadius = 50;
+      this.maxRadius = 40;
       this.movementX = -1;
       this.movementY = -1;
   
@@ -24,6 +23,8 @@ class Joystick {
       this.setupStyles();
       this.bindEvents();
       this.updateMovement();
+      
+      return this.joystick;
     }
   
     setupStyles() {
@@ -45,8 +46,8 @@ class Joystick {
         }
   
         #joystick-inner {
-          height: 64px;
-          width: 64px;
+          height: 70px;
+          width: 70px;
           border-radius: 50%;
           background: rgba(0, 136, 204, 0.25);
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.7) inset;

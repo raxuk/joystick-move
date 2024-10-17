@@ -1,3 +1,5 @@
 import Joystick from "./src/joystick";
 
-module.exports = Joystick
+window.Joystick = Joystick
+
+export default Joystick;

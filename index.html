@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joystick Example</title>
+    <title>Ejemplo de Joystick</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .movement-area {
+            position: relative;
+            height: 25vh;
+            width: 25vw;
+            border: 2px solid #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        #elementToMove {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            cursor: move;
+            user-select: none;
+        }
+
+        #joysticko {
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <div style="height: 25vh;width: 25vw; border:1px solid red">
-    <div id="elementToMove">MOVE-ME</div>
-</div>
+    <div class="container">
+        <div class="movement-area">
+            <div id="elementToMove">MUÉVEME</div>
+        </div>
+        <div id="joysticko"></div>
+    </div>
+
     <script type="module">
         import Joystick from './src/joystick.js';
-        new Joystick('elementToMove', (position) => {
-        console.log('Posición actual:', position);
-    });    </script>
+        const js2 = new Joystick('elementToMove', (position) => {
+            console.log('Posición actual:', position);
+        });
+        document.getElementById('joysticko').appendChild(js2);
+    </script>
 </body>
+
 </html>
