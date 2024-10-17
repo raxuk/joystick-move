@@ -2,6 +2,9 @@
 
 **Joystick-MV** is a lightweight JavaScript library that provides an interactive on-screen joystick to control the movement of an HTML element in real-time. Ideal for web projects that require mobile control interaction or simulated movement using a visual control.
 
+## Demo
+https://raxuk.github.io/joystick-move/
+
 ## Features
 
 - Real-time control of an HTML element's movement.
