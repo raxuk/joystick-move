@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Interactive on-screen joystick that allows users to control the movement of an HTML element in real-time",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "test": "test"
   },

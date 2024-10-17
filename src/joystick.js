@@ -30,13 +30,11 @@ class Joystick {
       const styles = `
         /* Estilos del joystick */
         #joystick {
+          margin:25px;
           width: 100px;
           height: 100px;
           background-color: #2ecc71;
           border-radius: 50%;
-          position: absolute;
-          bottom: 50px; 
-          left: 50px; 
           cursor: pointer;
           display: flex;
           justify-content: center;
