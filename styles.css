@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+#esteelemento {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Permite mover el elemento por todo el body */
+}
+
+#joystick {
+    width: 100px;
+    height: 100px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    position: absolute; /* Cambiado a absolute para que sea fácil de posicionar */
+    bottom: 50px; /* Ejemplo de posición fija */
+    left: 50px;   /* Ejemplo de posición fija */
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#joystick-inner {
+    width: 40px;  /* Tamaño del círculo interno */
+    height: 40px; /* Tamaño del círculo interno */
+    background-color: #27ae60; /* Color del círculo interno */
+    border-radius: 50%;
+    position: absolute; /* Permite mover el círculo interno */
+}
