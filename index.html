@@ -29,7 +29,7 @@
             margin-bottom: 20px;
         }
 
-        #elementToMove {
+        .elementToMove {
             width: 100px;
             height: 100px;
             background-color: #3498db;
@@ -40,10 +40,26 @@
             position: absolute;
             cursor: move;
             user-select: none;
+            border-radius: 50%;
         }
 
-        #joysticko {
-            margin-top: 20px;
+        .elementToMove2 {
+            width: 50px;
+            height: 50px;
+            background-color: #39db34;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            cursor: move;
+            user-select: none;
+            border-radius: 50%;
+        }
+        .js-cont {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
         }
     </style>
 </head>
@@ -51,18 +67,26 @@
 <body>
     <div class="container">
         <div class="movement-area">
-            <div id="elementToMove">MOVE ME</div>
+            <div id='elM1' class="elementToMove">MOVE ME</div>
+            <div id='elM2' class="elementToMove2"></div>
         </div>
-        <div id="joysticko"></div>
+        <div class="js-cont">
+            <div id="joysticko"></div>
+            <div id="joysticko2"></div>
+        </div>
     </div>
-
-    <script type="module">
-        import Joystick from './src/joystick.js';
-        const js2 = new Joystick('elementToMove', (position) => {
-            console.log('Posición actual:', position);
-        });
-        document.getElementById('joysticko').appendChild(js2);
-    </script>
 </body>
+<script type="module">
+    import Joystick from './src/joystick.js';
+    const js1 = new Joystick('elM1', (position) => {
+        console.log('Position:', position);
+    }, 10);
+    document.getElementById('joysticko').appendChild(js1);
+
+    const js2 = new Joystick('elM2', (position) => {
+        console.log('Position:', position);
+    });
+    document.getElementById('joysticko2').appendChild(js2);
+</script>
 
 </html>

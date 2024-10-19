@@ -6,31 +6,33 @@ class Joystick {
       this.elemento.style.position = 'absolute';
   
       this.onMoveCallback = onMoveCallback;
+
+      this.uuid = crypto.randomUUID();
   
-      this.joystick.id = 'joystick';
-      this.joystickInner.id = 'joystick-inner';
+      this.joystick.id = 'joystick-'+this.uuid;
+      this.joystickInner.id = 'joystick-inner-'+this.uuid;
   
       this.joystick.appendChild(this.joystickInner);
   
       this.isMoving = false;
-      this.speed = 4;
+      this.speed = speed;
       this.maxRadius = 40;
       this.movementX = -1;
       this.movementY = -1;
   
       this.previousPosition = { left: this.elemento.offsetLeft, top: this.elemento.offsetTop };
   
-      this.setupStyles();
+      this.setupStyles(this.uuid);
       this.bindEvents();
       this.updateMovement();
       
       return this.joystick;
     }
   
-    setupStyles() {
+    setupStyles(uuid) {
       const styles = `
         /* Estilos del joystick */
-        #joystick {
+        #joystick-${uuid} {
           margin:25px;
           width: 100px;
           height: 100px;
@@ -45,7 +47,7 @@ class Joystick {
           touch-action: none;
         }
   
-        #joystick-inner {
+        #joystick-inner-${uuid} {
           height: 70px;
           width: 70px;
           border-radius: 50%;
