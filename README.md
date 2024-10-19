@@ -28,11 +28,12 @@ Here is how you can use Joystick-MV in your project.
 ## HTML
 ```html	
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joystick Example</title>
+    <title>Ejemplo de Joystick</title>
     <style>
         body {
             display: flex;
@@ -57,7 +58,7 @@ Here is how you can use Joystick-MV in your project.
             margin-bottom: 20px;
         }
 
-        #elementToMove {
+        .elementToMove {
             width: 100px;
             height: 100px;
             background-color: #3498db;
@@ -68,31 +69,53 @@ Here is how you can use Joystick-MV in your project.
             position: absolute;
             cursor: move;
             user-select: none;
+            border-radius: 50%;
         }
 
-        #joysticko {
-            margin-top: 20px;
+        .elementToMove2 {
+            width: 50px;
+            height: 50px;
+            background-color: #39db34;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            cursor: move;
+            user-select: none;
+            border-radius: 50%;
+        }
+
+        .js-cont {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="movement-area">
-            <div id="elementToMove">MOVE ME</div>
+            <div id='elM1' class="elementToMove">MOVE ME</div>
+            <div id='elM2' class="elementToMove2"></div>
         </div>
-        <div id="joysticko"></div>
+        <div class="js-cont">
+            <div id="joysticko"></div>
+            <div id="joysticko2"></div>
+        </div>
     </div>
-
-    <script type="module">
-        import Joystick from './src/joystick.js';
-
-        // Instantiate the joystick and link it to the element to move
-        const js2 = new Joystick('elementToMove', (position) => {
-            console.log('Current position:', position);
-        });
-        document.getElementById('joysticko').appendChild(js2);
-    </script>
 </body>
+<script type="module">
+    import Joystick from './src/joystick.js';
+    const js1 = new Joystick('joysticko', 'elM1', (position) => {
+        console.log('Position:', position);
+    }, 10);
+    const js2 = new Joystick('joysticko2', 'elM2', (position) => {
+        console.log('Position:', position);
+    });
+</script>
+
 </html>
 ```
 
@@ -101,12 +124,9 @@ Here is how you can use Joystick-MV in your project.
 import Joystick from 'joystick-mv';
 
 // Create a new joystick linked to an HTML element
-const joystick = new Joystick('elementToMove', (position) => {
+const joystick = new Joystick('elementToAppend', 'elementToMove', (position) => {
     console.log('Current position:', position);
 });
-
-// Add it to any container on your page
-document.getElementById('joystick-container').appendChild(joystick);
 ```
 
 ## Parameters
@@ -147,9 +167,9 @@ By default, the joystick is designed with the following style:
 You can define a callback to trigger actions when the element moves. For example, to update the position in real-time or perform calculations based on the current coordinates of the element:
 
 ```javascript
-const joystick = new Joystick('elementToMove', (position) => {
+const joystick = new Joystick('elementToAppend', 'elementToMove', (position) => {
     console.log('Current position of the element:', position.left, position.top);
-});
+}, 10);
 ```
 
 ## Contributions

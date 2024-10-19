@@ -56,6 +56,7 @@
             user-select: none;
             border-radius: 50%;
         }
+
         .js-cont {
             display: flex;
             justify-content: space-around;
@@ -78,15 +79,12 @@
 </body>
 <script type="module">
     import Joystick from './src/joystick.js';
-    const js1 = new Joystick('elM1', (position) => {
+    const js1 = new Joystick('joysticko', 'elM1', (position) => {
         console.log('Position:', position);
     }, 10);
-    document.getElementById('joysticko').appendChild(js1);
-
-    const js2 = new Joystick('elM2', (position) => {
+    const js2 = new Joystick('joysticko2', 'elM2', (position) => {
         console.log('Position:', position);
     });
-    document.getElementById('joysticko2').appendChild(js2);
 </script>
 
 </html>
