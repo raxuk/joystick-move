@@ -11,7 +11,9 @@ class Joystick {
       this.uuid = crypto.randomUUID();
 
       this.joystick.id = 'joystick-' + this.uuid;
+      this.joystick.classList.add('joystick');
       this.joystickInner.id = 'joystick-inner-' + this.uuid;
+      this.joystickInner.classList.add('joystick-inner');
 
       this.joystick.appendChild(this.joystickInner);
 
