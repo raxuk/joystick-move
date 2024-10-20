@@ -1,6 +1,9 @@
 class Joystick {
   constructor(elementToAppend, elementToMoveId, onMoveCallback, speed = 4) {
     setTimeout(() => {
+      if (document.getElementById(elementToAppend)===null || document.getElementById(elementToAppend).getElementsByClassName('joystick').length > 0) {
+        return;
+      }
       this.joystick = document.createElement('div');
       this.joystickInner = document.createElement('div');
       this.elemento = document.getElementById(elementToMoveId);
