@@ -2,12 +2,14 @@
   "name": "joystick-mv",
   "version": "1.1.5",
   "description": "Interactive on-screen joystick that allows users to control the movement of an HTML element in real-time",
-  "main": "index.js",
+  "main": "dist/joystick.js",
+  "module": "dist/joystick.js",
   "type": "module",
   "directories": {
     "test": "test"
   },
   "scripts": {
+      "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,10 +23,22 @@
     "move",
     "position"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/joystick.js",
+      "require": "./dist/joystick.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "author": "raxuk",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/raxuk/joystick-move/issues"
   },
-  "homepage": "https://github.com/raxuk/joystick-move#readme"
+  "homepage": "https://github.com/raxuk/joystick-move#readme",
+  "devDependencies": {
+    "rollup": "^4.41.0"
+  }
 }
